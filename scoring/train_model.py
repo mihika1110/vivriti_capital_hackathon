@@ -16,8 +16,13 @@ df=pd.DataFrame(data)
 X=df.drop("default", axis=1)
 y=df["default"]
 
-model=LogisticRegression()
+model=LogisticRegression(
+    solver="liblinear",
+    max_iter=1000
+)
+
 model.fit(X, y)
 
 joblib.dump(model, "scoring/credit_model.pkl")
-print("Model trained and saved")
+
+print("✅ Credit model trained and saved successfully")
