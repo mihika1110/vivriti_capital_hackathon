@@ -1,57 +1,321 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Intelli-Credit</title>
-  <link rel="stylesheet" href="/static/style.css">
+<meta charset="UTF-8">
+<title>Intelli-Credit | Digital Credit Manager</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    min-height: 100vh;
+    color: #111827;
+    overflow-x: hidden;
+}
+
+/* Decorative background shapes */
+.bg-shape-1, .bg-shape-2 {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.25;
+    z-index: 0;
+}
+
+.bg-shape-1 {
+    width: 400px;
+    height: 400px;
+    background: #2563eb;
+    top: -100px;
+    right: -100px;
+    animation: float1 8s ease-in-out infinite;
+}
+
+.bg-shape-2 {
+    width: 350px;
+    height: 350px;
+    background: #10b981;
+    bottom: -120px;
+    left: -120px;
+    animation: float2 10s ease-in-out infinite;
+}
+
+@keyframes float1 {
+    0%,100% { transform: translateY(0px); }
+    50% { transform: translateY(30px); }
+}
+
+@keyframes float2 {
+    0%,100% { transform: translateY(0px); }
+    50% { transform: translateY(-30px); }
+}
+
+header {
+    padding: 30px 60px;
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+    position: relative;
+    z-index: 1;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.card {
+    background: rgba(255,255,255,0.95);
+    border-radius: 18px;
+    padding: 40px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+h2 {
+    font-size: 22px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: block;
+    color: #374151;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(37,99,235,0.4);
+}
+
+/* Feature items */
+.feature-item {
+    display: flex;
+    gap: 15px;
+    padding: 14px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    transition: background 0.3s ease;
+}
+
+.feature-item:hover {
+    background: rgba(37,99,235,0.06);
+}
+
+.feature-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(37,99,235,0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-item h4 {
+    font-size: 15px;
+    margin-bottom: 4px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.feature-item p {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.info-box {
+    margin-top: 25px;
+    padding: 15px;
+    background: rgba(16,185,129,0.08);
+    border-radius: 12px;
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.6;
+}
+
+@media(max-width: 950px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="navbar">
-  Intelli-Credit · Digital Credit Manager
+<div class="bg-shape-1"></div>
+<div class="bg-shape-2"></div>
+
+<header>
+    Intelli-Credit | Digital Credit Manager
+</header>
+
+<div class="container">
+    <div class="wrapper">
+
+        <!-- Left Card -->
+        <div class="card">
+            <h2>Data Ingestion</h2>
+
+            <form action="/process" method="post" enctype="multipart/form-data">
+
+                <label>Company Name</label>
+                <input type="text" name="company_name" required>
+
+                <label>Factory Utilization (%)</label>
+                <input type="number" name="capacity" required>
+
+                <label>Upload Financial / Legal PDF</label>
+                <input type="file" name="pdf" required>
+
+                <label>Site Visit / Management Notes</label>
+                <textarea name="notes" placeholder="Factory running at 40%, delays observed, management cautious"></textarea>
+
+                <button type="submit">Run AI Credit Appraisal</button>
+            </form>
+        </div>
+
+        <!-- Right Card -->
+        <div class="card">
+            <h2>AI Credit Intelligence</h2>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg width="18" height="18" fill="#2563eb" viewBox="0 0 24 24">
+                        <path d="M3 3h18v2H3V3zm2 4h14v14H5V7zm4 4v6h2v-6H9zm4-2v8h2V9h-2z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h4>Financial Performance Analysis</h4>
+                    <p>Revenue, profitability and cash flow diagnostics.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg width="18" height="18" fill="#2563eb" viewBox="0 0 24 24">
+                        <path d="M4 4h16v16H4V4zm3 3v2h10V7H7zm0 4v2h6v-2H7z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h4>GST Mismatch Detection</h4>
+                    <p>GSTR-2A vs 3B reconciliation and anomaly tracking.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg width="18" height="18" fill="#2563eb" viewBox="0 0 24 24">
+                        <path d="M12 2l10 6v12H2V8l10-6zm0 2.3L4 9v9h16V9l-8-4.7z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h4>Bank vs Revenue Reconciliation</h4>
+                    <p>Bank statement cross-verification against sales data.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg width="18" height="18" fill="#2563eb" viewBox="0 0 24 24">
+                        <path d="M12 1l3 5h5l-4 4 1 6-5-3-5 3 1-6-4-4h5z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h4>Litigation & Document Risk</h4>
+                    <p>Legal exposure detection and keyword risk scanning.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg width="18" height="18" fill="#2563eb" viewBox="0 0 24 24">
+                        <path d="M12 12c2.7 0 5 2.3 5 5v1H7v-1c0-2.7 2.3-5 5-5zm0-10a4 4 0 110 8 4 4 0 010-8z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h4>Human Site-Visit Integration</h4>
+                    <p>Qualitative management insights integrated into scoring.</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                Intelli-Credit synthesizes structured data, unstructured documents,
+                and qualitative inputs to generate an explainable
+                <strong>Credit Appraisal Memo (CAM).</strong>
+            </div>
+
+        </div>
+
+    </div>
 </div>
-
-<form action="/process" method="post" enctype="multipart/form-data">
-  <div class="dashboard">
-
-    <div class="card">
-      <h2>📥 Data Ingestion</h2>
-
-      <label>Company Name</label>
-      <input name="company_name" required>
-
-      <label>Factory Utilization (%)</label>
-      <input name="capacity" type="number" min="0" max="100" required>
-
-      <label>Upload Financial / Legal PDF</label>
-      <input type="file" name="pdf" required>
-
-      <label>Site Visit / Management Notes</label>
-      <textarea name="notes" rows="4" placeholder="e.g. Factory running at 40%, delays observed, management cautious"></textarea>
-
-      <button type="submit">Run AI Credit Appraisal</button>
-    </div>
-
-    <div class="card">
-      <h2>🧠 AI Credit Intelligence</h2>
-      <ul>
-        <li>✔ Financial performance analysis</li>
-        <li>✔ GST mismatch (GSTR-2A vs 3B)</li>
-        <li>✔ Bank vs revenue reconciliation</li>
-        <li>✔ Litigation & document risk detection</li>
-        <li>✔ Human site-visit insights integration</li>
-      </ul>
-
-      <p>
-        Intelli-Credit synthesizes structured data, unstructured documents,
-        and qualitative human inputs to generate an
-        <b>explainable Credit Appraisal Memo (CAM)</b>.
-      </p>
-    </div>
-
-  </div>
-</form>
 
 </body>
 </html>

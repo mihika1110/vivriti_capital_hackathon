@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+jinja2
+python-multipart
+pandas
+numpy
+scikit-learn
+PyPDF2
+pdfplumber
+pymupdf
+reportlab
+requests
