@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Intelli-Credit</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="navbar">
+  Intelli-Credit · AI Credit Decisioning Engine
+</div>
+
+<form action="/process" method="post" enctype="multipart/form-data">
+  <div class="dashboard">
+
+    <!-- LEFT: DATA INGESTION -->
+    <div class="card">
+      <h2>📥 Data Ingestion</h2>
+
+      <label>Company Name</label>
+      <input name="company_name" required>
+
+      <label>Factory Utilization (%)</label>
+      <input name="capacity" type="number" min="0" max="100" required>
+
+      <label>Upload Financial / Legal PDFs</label>
+      <input type="file" name="pdf" required>
+
+      <button type="submit">Run AI Credit Appraisal</button>
+    </div>
+
+    <!-- RIGHT: WHAT AI WILL DO -->
+    <div class="card">
+      <h2>🧠 What Intelli-Credit Analyzes</h2>
+      <ul>
+        <li>✔ Financial strength & cash flows</li>
+        <li>✔ GST (GSTR-2A vs 3B) inconsistencies</li>
+        <li>✔ Bank vs revenue mismatch</li>
+        <li>✔ Litigation & document risks</li>
+        <li>✔ Site visit & management inputs</li>
+      </ul>
+
+      <p>
+        The system synthesizes structured data, unstructured documents,
+        and qualitative insights to generate an
+        <b>explainable Credit Appraisal Memo (CAM)</b>.
+      </p>
+    </div>
+
+  </div>
+</form>
+
+</body>
+</html>

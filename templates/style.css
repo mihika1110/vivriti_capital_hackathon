@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #333;
+}
+
+/* Top Navbar */
+.navbar {
+  background: rgba(0, 0, 0, 0.35);
+  padding: 18px 40px;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Main container */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 25px;
+  padding: 40px;
+}
+
+/* Cards */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #1a237e;
+  font-size: 20px;
+}
+
+/* Inputs */
+label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+input,
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background: linear-gradient(135deg, #1a237e, #3949ab);
+  color: white;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Risk badges */
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.badge.green {
+  background: #c8e6c9;
+  color: #256029;
+}
+
+.badge.red {
+  background: #ffcdd2;
+  color: #b71c1c;
+}
+
+/* Footer decision bar */
+.decision-bar {
+  grid-column: span 2;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 25px;
+  text-align: center;
+}

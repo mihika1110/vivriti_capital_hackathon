@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Credit Decision</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="navbar">
+  Intelli-Credit · AI Recommendation
+</div>
+
+<div class="dashboard">
+
+  <!-- AI INSIGHTS -->
+  <div class="card">
+    <h2>📊 AI Risk Summary</h2>
+
+    <p><b>Risk Score:</b> {{ score }}</p>
+    <p><b>ML Default Probability:</b> {{ ml_prob }}</p>
+
+    {% if decision == "APPROVE" %}
+      <span class="badge green">APPROVED</span>
+    {% else %}
+      <span class="badge red">REJECTED</span>
+    {% endif %}
+  </div>
+
+  <!-- EXPLAINABILITY -->
+  <div class="card">
+    <h2>🔍 Key Risk Drivers</h2>
+    <ul>
+      {% for reason in reasons %}
+        <li>{{ reason }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- FINAL DECISION -->
+  <div class="decision-bar">
+    <h2>📄 Credit Appraisal Memo Generated</h2>
+    <p>Your explainable CAM is ready for download.</p>
+    <a href="{{ cam_path }}" target="_blank">
+      <button>Download CAM (PDF)</button>
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>
