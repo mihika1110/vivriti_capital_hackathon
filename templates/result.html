@@ -8,16 +8,20 @@
 <body>
 
 <div class="navbar">
-  Intelli-Credit · AI Recommendation Dashboard
+  Intelli-Credit · AI Credit Decision Dashboard
 </div>
 
 <div class="dashboard">
 
-  <!-- AI SUMMARY -->
+  <!-- RISK METER -->
   <div class="card">
-    <h2>📊 AI Risk Summary</h2>
+    <h2>⚖️ Overall Risk Assessment</h2>
 
-    <p><b>Final Risk Score:</b> {{ score }}</p>
+    <div class="risk-meter">
+      <div class="risk-fill" style="width: {{ score }}%;"></div>
+    </div>
+
+    <p><b>Risk Score:</b> {{ score }} / 100</p>
     <p><b>ML Default Probability:</b> {{ ml_prob }}</p>
 
     {% if decision == "APPROVE" %}
@@ -29,7 +33,7 @@
 
   <!-- EXPLAINABILITY -->
   <div class="card">
-    <h2>🔍 Key Risk Drivers</h2>
+    <h2>🔍 Explainability – Why This Decision?</h2>
     <ul>
       {% for reason in reasons %}
         <li>{{ reason }}</li>
@@ -37,25 +41,26 @@
     </ul>
   </div>
 
-  <!-- FIVE Cs -->
+  <!-- FIVE Cs VISUALIZATION -->
   <div class="card">
-    <h2>📐 Five Cs of Credit</h2>
-    <ul>
-      {% for c, data in five_cs.items() %}
-        <li>
-          <b>{{ c }}</b>: {{ data.score }}/100  
-          <br><small>{{ data.comment }}</small>
-        </li>
-      {% endfor %}
-    </ul>
+    <h2>📐 Five Cs of Credit Analysis</h2>
+
+    {% for c, data in five_cs.items() %}
+      <p><b>{{ c }}</b> – {{ data.score }}/100</p>
+      <div class="bar">
+        <div class="bar-fill" style="width: {{ data.score }}%;"></div>
+      </div>
+      <small>{{ data.comment }}</small>
+      <br><br>
+    {% endfor %}
   </div>
 
   <!-- FINAL DECISION -->
   <div class="decision-bar">
     <h2>📄 Credit Appraisal Memo Generated</h2>
     <p>
-      Recommended Limit: ₹{{ limit }} <br>
-      Interest Rate: {{ rate }}%
+      <b>Recommended Limit:</b> ₹{{ limit }} <br>
+      <b>Interest Rate:</b> {{ rate }}%
     </p>
 
     <a href="{{ cam_path }}" target="_blank">
