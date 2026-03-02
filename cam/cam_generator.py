@@ -40,12 +40,12 @@ def generate_cam(output_path, company_name, scoring):
     c.setFont("Helvetica", 11)
     for reason in scoring["reasons"]:
         c.drawString(60, y, f"- {reason}")
-        y -= 15
+        y=y-15
 
-    y -= 20
+    y=y-20
     c.setFont("Helvetica-Bold", 12)
     c.drawString(50, y, "3. AI-Based Recommendation Rationale")
-    y -= 20
+    y=y-20
 
     c.setFont("Helvetica", 11)
     rationale = (
