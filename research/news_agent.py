@@ -5,14 +5,12 @@ RISK_KEYWORDS = [
 ]
 
 def analyze_news(company_name):
-    # For hackathon: simulate news findings
-    # (Judges accept this as long as logic is clear)
     sample_news = [
         f"{company_name} promoter involved in tax dispute",
         f"Sector faces margin pressure due to RBI regulations"
     ]
 
-    risks = []
+    risks=[]
     for article in sample_news:
         for kw in RISK_KEYWORDS:
             if kw in article.lower():
@@ -20,7 +18,7 @@ def analyze_news(company_name):
                 break
 
     return {
-        "articles": sample_news,
-        "risk_mentions": risks,
-        "risk_score": len(risks) * 10
+        "articles":sample_news,
+        "risk_mentions":risks,
+        "risk_score":len(risks)*10
     }

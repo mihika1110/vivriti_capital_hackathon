@@ -5,37 +5,37 @@ def generate_cam(output_path, company_name, scoring):
     c = canvas.Canvas(output_path, pagesize=A4)
     width, height = A4
 
-    y = height - 50
+    y=height-50
 
     c.setFont("Helvetica-Bold", 14)
     c.drawString(50, y, "CREDIT APPRAISAL MEMORANDUM (CAM)")
-    y -= 30
+    y=y-30
 
     c.setFont("Helvetica", 11)
     c.drawString(50, y, f"Borrower Name: {company_name}")
-    y -= 20
+    y=y-20
     c.drawString(50, y, f"Final Decision: {scoring['decision']}")
-    y -= 20
+    y=y-20
     c.drawString(50, y, f"Overall Risk Score: {scoring['risk_score']}/100")
-    y -= 30
+    y=y-30
 
     c.setFont("Helvetica-Bold", 12)
     c.drawString(50, y, "1. Executive Summary")
-    y -= 20
+    y=y-20
 
     c.setFont("Helvetica", 11)
-    summary = (
+    summary=(
         f"The credit proposal for {company_name} has been evaluated using the "
         "Intelli-Credit AI Decisioning Engine. The assessment integrates financial "
         "performance, statutory data, unstructured disclosures, secondary research, "
         "and qualitative site visit observations."
     )
     c.drawString(50, y, summary)
-    y -= 40
+    y=y-40
 
     c.setFont("Helvetica-Bold", 12)
     c.drawString(50, y, "2. Key Risk Drivers")
-    y -= 20
+    y=y-20
 
     c.setFont("Helvetica", 11)
     for reason in scoring["reasons"]:
@@ -55,14 +55,14 @@ def generate_cam(output_path, company_name, scoring):
         "the final risk assessment."
     )
     c.drawString(50, y, rationale)
-    y -= 40
+    y=y-40
 
     c.setFont("Helvetica-Bold", 12)
     c.drawString(50, y, "4. Conclusion")
-    y -= 20
+    y=y-20
 
     c.setFont("Helvetica", 11)
-    conclusion = (
+    conclusion=(
         "Based on the above analysis, the proposal has been evaluated in line with "
         "prudent credit risk management practices. The recommendation reflects both "
         "quantitative risk indicators and qualitative business insights."

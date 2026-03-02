@@ -13,7 +13,6 @@
 
 <div class="dashboard">
 
-  <!-- RISK METER -->
   <div class="card">
     <h2>⚖️ Overall Risk Assessment</h2>
 
@@ -24,14 +23,13 @@
     <p><b>Risk Score:</b> {{ score }} / 100</p>
     <p><b>ML Default Probability:</b> {{ ml_prob }}</p>
 
-    {% if decision == "APPROVE" %}
+    {% if decision=="APPROVE" %}
       <span class="badge green">APPROVED</span>
     {% else %}
       <span class="badge red">REJECTED</span>
     {% endif %}
   </div>
 
-  <!-- EXPLAINABILITY -->
   <div class="card">
     <h2>🔍 Explainability – Why This Decision?</h2>
     <ul>
@@ -41,7 +39,6 @@
     </ul>
   </div>
 
-  <!-- FIVE Cs VISUALIZATION -->
   <div class="card">
     <h2>📐 Five Cs of Credit Analysis</h2>
 
@@ -55,7 +52,6 @@
     {% endfor %}
   </div>
 
-  <!-- FINAL DECISION -->
   <div class="decision-bar">
     <h2>📄 Credit Appraisal Memo Generated</h2>
     <p>
