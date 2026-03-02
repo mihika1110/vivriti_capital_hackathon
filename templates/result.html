@@ -8,16 +8,16 @@
 <body>
 
 <div class="navbar">
-  Intelli-Credit · AI Recommendation
+  Intelli-Credit · AI Recommendation Dashboard
 </div>
 
 <div class="dashboard">
 
-  <!-- AI INSIGHTS -->
+  <!-- AI SUMMARY -->
   <div class="card">
     <h2>📊 AI Risk Summary</h2>
 
-    <p><b>Risk Score:</b> {{ score }}</p>
+    <p><b>Final Risk Score:</b> {{ score }}</p>
     <p><b>ML Default Probability:</b> {{ ml_prob }}</p>
 
     {% if decision == "APPROVE" %}
@@ -37,10 +37,27 @@
     </ul>
   </div>
 
+  <!-- FIVE Cs -->
+  <div class="card">
+    <h2>📐 Five Cs of Credit</h2>
+    <ul>
+      {% for c, data in five_cs.items() %}
+        <li>
+          <b>{{ c }}</b>: {{ data.score }}/100  
+          <br><small>{{ data.comment }}</small>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
   <!-- FINAL DECISION -->
   <div class="decision-bar">
     <h2>📄 Credit Appraisal Memo Generated</h2>
-    <p>Your explainable CAM is ready for download.</p>
+    <p>
+      Recommended Limit: ₹{{ limit }} <br>
+      Interest Rate: {{ rate }}%
+    </p>
+
     <a href="{{ cam_path }}" target="_blank">
       <button>Download CAM (PDF)</button>
     </a>

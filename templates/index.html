@@ -8,13 +8,13 @@
 <body>
 
 <div class="navbar">
-  Intelli-Credit · AI Credit Decisioning Engine
+  Intelli-Credit · Digital Credit Manager
 </div>
 
 <form action="/process" method="post" enctype="multipart/form-data">
   <div class="dashboard">
 
-    <!-- LEFT: DATA INGESTION -->
+    <!-- LEFT PANEL: DATA INGESTION -->
     <div class="card">
       <h2>📥 Data Ingestion</h2>
 
@@ -24,26 +24,29 @@
       <label>Factory Utilization (%)</label>
       <input name="capacity" type="number" min="0" max="100" required>
 
-      <label>Upload Financial / Legal PDFs</label>
+      <label>Upload Financial / Legal PDF</label>
       <input type="file" name="pdf" required>
+
+      <label>Site Visit / Management Notes</label>
+      <textarea name="notes" rows="4" placeholder="e.g. Factory running at 40%, delays observed, management cautious"></textarea>
 
       <button type="submit">Run AI Credit Appraisal</button>
     </div>
 
-    <!-- RIGHT: WHAT AI WILL DO -->
+    <!-- RIGHT PANEL: AI CONTEXT -->
     <div class="card">
-      <h2>🧠 What Intelli-Credit Analyzes</h2>
+      <h2>🧠 AI Credit Intelligence</h2>
       <ul>
-        <li>✔ Financial strength & cash flows</li>
-        <li>✔ GST (GSTR-2A vs 3B) inconsistencies</li>
-        <li>✔ Bank vs revenue mismatch</li>
-        <li>✔ Litigation & document risks</li>
-        <li>✔ Site visit & management inputs</li>
+        <li>✔ Financial performance analysis</li>
+        <li>✔ GST mismatch (GSTR-2A vs 3B)</li>
+        <li>✔ Bank vs revenue reconciliation</li>
+        <li>✔ Litigation & document risk detection</li>
+        <li>✔ Human site-visit insights integration</li>
       </ul>
 
       <p>
-        The system synthesizes structured data, unstructured documents,
-        and qualitative insights to generate an
+        Intelli-Credit synthesizes structured data, unstructured documents,
+        and qualitative human inputs to generate an
         <b>explainable Credit Appraisal Memo (CAM)</b>.
       </p>
     </div>
